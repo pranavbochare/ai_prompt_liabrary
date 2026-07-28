@@ -53,7 +53,7 @@ export function Sidebar({
           </p>
         </div>
 
-        <nav className="flex-1 overflow-y-auto px-3 space-y-1">
+        <nav className="sidebar-scroll flex-1 overflow-y-auto px-3 space-y-1">
           <button
             onClick={() => onSelectCategory('All')}
             className="w-full flex items-center justify-between gap-2 px-3 py-2 text-sm rounded-sm transition-colors"

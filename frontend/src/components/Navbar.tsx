@@ -54,7 +54,7 @@ export function Navbar({
           ref={searchInputRef}
           value={query}
           onChange={(e) => onQueryChange(e.target.value)}
-          placeholder="Search title or content...  (press / )"
+          placeholder="Search title or content"
           className="w-full pl-9 pr-3 py-2 text-sm rounded-sm border outline-none"
           style={{ background: 'var(--surface)', borderColor: 'var(--border)', color: 'var(--ink)' }}
         />
