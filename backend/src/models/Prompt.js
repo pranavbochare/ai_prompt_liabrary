@@ -1,42 +1,42 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
 export const CATEGORIES = [
-  'Coding',
-  'Marketing',
-  'Content Writing',
-  'Email',
-  'Resume',
-  'SQL',
-  'Design',
-  'Social Media',
-  'Productivity',
-  'Others',
+  "Coding",
+  "Marketing",
+  "Content Writing",
+  "Email",
+  "Resume",
+  "SQL",
+  "Design",
+  "Social Media",
+  "Productivity",
+  "Others",
 ];
 
 const promptSchema = new mongoose.Schema(
   {
     title: {
       type: String,
-      required: [true, 'Title is required'],
+      required: [true, "Title is required"],
       trim: true,
-      maxlength: [120, 'Title cannot exceed 120 characters'],
+      maxlength: [120, "Title cannot exceed 120 characters"],
     },
     content: {
       type: String,
-      required: [true, 'Prompt content is required'],
+      required: [true, "Prompt content is required"],
       trim: true,
     },
     description: {
       type: String,
       trim: true,
-      default: '',
-      maxlength: [300, 'Description cannot exceed 300 characters'],
+      default: "",
+      maxlength: [300, "Description cannot exceed 300 characters"],
     },
     category: {
       type: String,
       required: true,
       enum: CATEGORIES,
-      default: 'Others',
+      default: "Others",
     },
     tags: {
       type: [String],
@@ -56,14 +56,14 @@ const promptSchema = new mongoose.Schema(
     },
   },
   {
-    timestamps: true, // gives us createdAt / updatedAt
-  }
+    timestamps: true,
+  },
 );
 
-promptSchema.index({ title: 'text', content: 'text' });
+promptSchema.index({ title: "text", content: "text" });
 
 // Shape the JSON response to match the frontend's Prompt type
-promptSchema.set('toJSON', {
+promptSchema.set("toJSON", {
   virtuals: true,
   versionKey: false,
   transform: (_doc, ret) => {
@@ -73,4 +73,4 @@ promptSchema.set('toJSON', {
   },
 });
 
-export default mongoose.model('Prompt', promptSchema);
+export default mongoose.model("Prompt", promptSchema);
