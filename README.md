@@ -47,7 +47,6 @@ ai-prompt-library/
         ├── routes/         CRUD + bulk reorder routes
         ├── middleware/     Centralized error handling
         ├── server.js       App entry point
-        └── seed.js         Seeds the DB with sample prompts
 ```
 
 ---
@@ -78,11 +77,8 @@ ai-prompt-library/
 ```bash
 cd backend
 npm install
-cp .env.example .env
-# Edit .env and set MONGO_URI - either a local MongoDB instance:
 #   MONGO_URI=mongodb://127.0.0.1:27017/ai_prompt_library
 # or a free MongoDB Atlas cluster connection string.
-npm run seed   # optional: populates the DB with 6 sample prompts
 npm run dev    # starts the API on http://localhost:5000
 ```
 
@@ -91,7 +87,6 @@ npm run dev    # starts the API on http://localhost:5000
 ```bash
 cd frontend
 npm install
-cp .env.example .env   # VITE_API_URL defaults to http://localhost:5000/api
 npm run dev             # starts the app on http://localhost:5173
 ```
 
@@ -108,21 +103,18 @@ switches to "Local mode" and everything is stored in your browser's LocalStorage
    specific IPs of your hosting provider.
 3. Copy the connection string into `MONGO_URI`.
 
-### Backend: Render / Railway (free tier)
+### Backend: Vercel (free tier)
 1. Push this repo to GitHub.
 2. Create a new Web Service pointing at the `backend/` directory.
 3. Build command: `npm install` · Start command: `npm start`.
 4. Set environment variables: `MONGO_URI`, `CLIENT_ORIGIN` (your deployed frontend URL),
    and optionally `PORT` (most providers set this automatically).
 
-### Frontend: Vercel / Netlify (free tier)
+### Frontend: Vercel (free tier)
 1. Import the repo, set the project root to `frontend/`.
 2. Build command: `npm run build` · Output directory: `dist`.
 3. Set the environment variable `VITE_API_URL` to your deployed backend's `/api` URL,
    e.g. `https://your-backend.onrender.com/api`.
-
-Once both are live, share the frontend URL as your live demo link and the GitHub repo as your
-source link.
 
 ---
 
