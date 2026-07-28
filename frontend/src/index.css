@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+@import 'tailwindcss';
+
+:root,
+[data-theme='light'] {
+  --bg: #e7ddc0;
+  --bg-elevated: #f2ead2;
+  --surface: #f7f1dc;
+  --surface-hover: #efe6c9;
+  --ink: #24301f;
+  --ink-soft: #5a5c46;
+  --border: #c8b98d;
+  --border-strong: #a6935c;
+  --accent-brass: #96701e;
+  --accent-teal: #2f6f63;
+  --accent-danger: #a13d2b;
+  --shadow-color: 36 30 12;
+
+  --cat-coding: #2f6f63;
+  --cat-marketing: #a13d2b;
+  --cat-content: #6a5a2c;
+  --cat-email: #3d5a80;
+  --cat-resume: #7a4419;
+  --cat-sql: #4a5a2f;
+  --cat-design: #8c3d6b;
+  --cat-social: #a1642b;
+  --cat-productivity: #2f6f63;
+  --cat-others: #5a5c46;
+}
+
+[data-theme='dark'] {
+  --bg: #14181a;
+  --bg-elevated: #1b2022;
+  --surface: #1f2528;
+  --surface-hover: #262d30;
+  --ink: #e9e2c9;
+  --ink-soft: #a9a58c;
+  --border: #333a3d;
+  --border-strong: #454e51;
+  --accent-brass: #d3a53a;
+  --accent-teal: #59b3a1;
+  --accent-danger: #e0705a;
+  --shadow-color: 0 0 0;
+
+  --cat-coding: #59b3a1;
+  --cat-marketing: #e0705a;
+  --cat-content: #d1b355;
+  --cat-email: #7fa7d6;
+  --cat-resume: #d69a5c;
+  --cat-sql: #a3c76b;
+  --cat-design: #d689b8;
+  --cat-social: #e0a15c;
+  --cat-productivity: #59b3a1;
+  --cat-others: #a9a58c;
+}
+
+@theme {
+  --font-display: 'Fraunces', serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  transition: background-color 0.2s ease, color 0.2s ease;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--accent-brass);
+  color: var(--bg-elevated);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent-teal);
+  outline-offset: 2px;
+}
+
+/* Index-card look: a faint double rule under the title, like a catalog entry line */
+.catalog-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  position: relative;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+  box-shadow: 0 1px 2px rgba(var(--shadow-color) / 0.06);
+}
+
+.catalog-card:hover {
+  border-color: var(--border-strong);
+  box-shadow: 0 6px 16px rgba(var(--shadow-color) / 0.12);
+  transform: translateY(-2px);
+}
+
+/* Punch hole, top-left, like a real index card */
+.catalog-card::before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+}
+
+/* Folded-corner notch for pinned cards */
+.catalog-card.is-pinned::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 22px 22px 0;
+  border-color: transparent var(--accent-brass) transparent transparent;
+}
+
+/* Catalog guide-tab shape for category filters */
+.tab-chip {
+  clip-path: polygon(8% 0%, 100% 0%, 92% 100%, 0% 100%);
+  font-family: var(--font-mono);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .catalog-card,
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
